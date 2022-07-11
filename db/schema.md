@@ -9,6 +9,7 @@
     "username": "string",
     "password": "string",
     "avatar_filename": "string",
+    "organization": "string",
     "date_created": "date",
     "works": [int],
     "favorites": [int],

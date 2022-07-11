@@ -25,7 +25,7 @@
         "$oid": "string"
     },
     "work_id": int,
-    "author_id": "string",
+    "author_id": int,
     "type": int,
     "filename": "string",
     "date_created": "date",

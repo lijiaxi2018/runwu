@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      uri: mongodb://admin:!@#123qweQWE@localhost:27017

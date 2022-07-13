@@ -33,15 +33,22 @@
         "tags": [
           "Account"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SignIn"
-              }
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -78,21 +85,6 @@
           "organization": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-
-      "SignIn": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "nullable": false
-          },
-          "password": {
-            "type": "string",
-            "nullable": false
           }
         },
         "additionalProperties": false

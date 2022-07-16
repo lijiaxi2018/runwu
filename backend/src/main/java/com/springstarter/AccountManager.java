@@ -18,7 +18,7 @@ import java.util.Date;
 @Component
 public class AccountManager {
 
-    @Autowired
+
     private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://admin:lin2890343180@localhost:27017"), "userdata");
 
     private int largestId;
@@ -42,8 +42,9 @@ public class AccountManager {
      * @param organization the organization of user
      * @return a pojo object to insert into the mongodb
      */
-    public User createUser(String username, String password, String organization) {
-        User newUser = new User(++largestId, username, password, "hashed_filename", organization, new Date(), 0,0,0,0);
+    public User createUser(String username, String password, String organization, String avatarFilename) {
+        User newUser = new User(++largestId, username, password, avatarFilename, organization, new Date(), 0,0,0,0);
+        mongoTemplate.insert(newUser, "author");
         return newUser;
     }
 

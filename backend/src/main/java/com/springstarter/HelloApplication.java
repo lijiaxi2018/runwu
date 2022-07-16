@@ -17,21 +17,13 @@ import java.util.List;
 @SpringBootApplication
 public class HelloApplication {
 
-    @Autowired
-    private static MongoTemplate mongoTemplate;
-
     public static void main(String[] args) {
-//        SpringApplication.run(HelloApplication.class, args);
-        try {
-//            mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://admin:lin2890343180@localhost:27017"), "userdata");
-//            Query query = Query.query(Criteria.where("username").is("lin"));
-//            List<User> one = mongoTemplate.findAll(User.class);
-//            System.out.println(one);
-            AccountManager a = new AccountManager();
-//            a.createUser();
-        } catch (Exception e) {
-            e.printStackTrace();
+        boolean server = true;
+        if (server) {
+            SpringApplication.run(HelloApplication.class, args);
+        } else {
+            AccountManager accountManager = new AccountManager();
+            System.out.println(accountManager.loginUser("lin", "lin289034"));
         }
-
     }
 }

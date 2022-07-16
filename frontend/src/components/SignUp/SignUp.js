@@ -1,5 +1,18 @@
 import React, { useState, useReducer, useEffect } from 'react';
+import Axios from 'axios';
 import './SignUp.css';
+
+// API[POST]: SignUp 
+const clientSignUp = async (formData) => {
+  const response = await Axios.post(`http://localhost:8081/api/Account/SignUp`, {
+    username: formData.username,
+    password: formData.password,
+    organization: formData.organization,
+    avatar: ""
+  })
+  console.log(response)
+  console.log(response.data)
+};
 
 const formReducer = (state, event) => {
   if (event.reset) {
@@ -45,15 +58,15 @@ function SignUp() {
   
   const handleSubmit = event => {
     event.preventDefault();
-    if (matching) {
+    if (matching && filled) {
       setSubmitting(true);
 
-      setTimeout(() => {
-        setSubmitting(false);
-        setFormData({
-          reset: true
-        })
-      }, 3000);
+      clientSignUp(formData);
+
+      setSubmitting(false);
+      setFormData({
+        reset: true
+      })
     }
   }
 

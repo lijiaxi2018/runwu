@@ -6,3 +6,13 @@
 #      database:
 server:
   port: 8081
+
+# Swagger UI Customization
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+# Swagger UI Customization
+apiTitle: "RunWu API"
+apiDescription: "An accessible platform to share art works & ideas. See the GitHub page for more information at (https://github.com/lijiaxi2018/runwu)"
+apiVersion: "0.1"

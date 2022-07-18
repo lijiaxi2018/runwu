@@ -5,7 +5,7 @@ services:
     container_name: runwu_db
     image: mongo
     volumes:
-      - "~/docker_data/data/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js"
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     ports:
       - "27017:27017"
 

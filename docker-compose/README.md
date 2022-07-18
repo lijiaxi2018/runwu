@@ -1,6 +1,12 @@
 # Run RunWu locally via Docker
-1. Copy mongo-init.js to /Users/your_username/docker_data/data
-2. Run the following command
+Run the following command
 ```
 docker compose up
+```
+
+## Tips
+### Push a docker image to Docker Hub
+```
+docker tag IMAGE_NAME DOCKERHUB_NAME/IMAGE_NAME
+docker push DOCKERHUB_NAME/IMAGE_NAME
 ```

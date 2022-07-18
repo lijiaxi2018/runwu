@@ -19,7 +19,7 @@ import java.util.Date;
 public class AccountManager {
 
 
-    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://admin:lin2890343180@localhost:27017"), "userdata");
+    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://127.0.0.1:27017"), "userdata");
 
     private int largestId;
 

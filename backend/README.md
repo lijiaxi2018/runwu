@@ -4,7 +4,13 @@ Web server for RunWu, an accessible platform for sharing art works & ideas.
 ## Swagger
 Graphical User Interface to test APIs provided by the server.
 
-### Docker Run Swagger
+### To manipulate the DB with Swagger UI
+Enter the following URL into the browser
+```
+http://localhost:8081/swagger-ui/index.html
+```
+
+### To see the schema
 1. Use the following commands to run the Swageer Editor
 ```
 docker pull swaggerapi/swagger-editor

@@ -2,23 +2,23 @@ version: "3.7"
 
 services:
   db:
-    container_name: runwu_db
     image: mongo
+    container_name: runwu_db
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     ports:
       - "27017:27017"
 
   api:
-    image: runwu_webapi
+    image: lijiaxi2018/runwu_webapi
     depends_on:
       - db
-    container_name: "runwu_api"
+    container_name: runwu_api
     ports:
       - "8081:8081"
   
   frontend:
-    image: runwu_frontend
-    container_name: "runwu_frontend"
+    image: lijiaxi2018/runwu_frontend
+    container_name: runwu_frontend
     ports:
       - "3000:3000"

@@ -11,6 +11,9 @@ pipeline {
                     sh 'echo Start uploading Docker image'
                     sh 'docker tag runwu_frontend lijiaxi2018/runwu_frontend'
                     sh 'docker push lijiaxi2018/runwu_frontend'
+
+                    sh 'echo Delete local image'
+                    sh 'docker image rm runwu_frontend'
                 }
             }
         }

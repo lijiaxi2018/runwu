@@ -2,18 +2,6 @@ import React, { useState, useReducer, useEffect } from 'react';
 import Axios from 'axios';
 import './SignUp.css';
 
-// API[POST]: SignUp 
-const clientSignUp = async (formData) => {
-  const response = await Axios.post(`http://localhost:8081/api/Account/SignUp`, {
-    username: formData.username,
-    password: formData.password,
-    organization: formData.organization,
-    avatar: ""
-  })
-  console.log(response)
-  console.log(response.data)
-};
-
 const formReducer = (state, event) => {
   if (event.reset) {
     return {
@@ -31,7 +19,23 @@ const formReducer = (state, event) => {
 }
 
 function SignUp() {
+  // API[POST]: SignUp 
+  const clientSignUp = async (formData) => {
+    const response = await Axios.post(`http://localhost:8081/api/Account/SignUp`, {
+      username: formData.username,
+      password: formData.password,
+      organization: formData.organization,
+      avatar: ""
+    })
+    console.log(response)
+    console.log(response.data)
+
+    handleSubmitted(response.data)
+  };
+
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submittedMessage, setSubmittedMessage] = useState("");
   const [formData, setFormData] = useReducer(formReducer, {
     username: "",
     password: "",
@@ -70,6 +74,24 @@ function SignUp() {
     }
   }
 
+  const handleSubmitted = code => {
+    if (code === 200) {
+      setSubmittedMessage("Successfully submitted!")
+    } else if (code === 201) {
+      setSubmittedMessage("Username already existed!")
+    } else {
+      setSubmittedMessage("Please check you internet!")
+    }
+
+    setSubmitted(true)
+    setFilled(true);
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setFilled(false);
+    }, 3000);
+  }
+
   return (
     <div className="wrapper">
       <h1>Welcome</h1>
@@ -85,13 +107,19 @@ function SignUp() {
 
       {(!filled) &&
         <div>
-          <p>Please fill all the required fields.</p>
+          <p style={{ color: 'red' }}>Please fill all the required fields.</p>
         </div>
       }
 
       {(!matching) &&
         <div>
-          <p>Passwords do not match. Please re-enter the passwords.</p>
+          <p style={{ color: 'red' }}>Passwords do not match. Please re-enter the passwords.</p>
+        </div>
+      }
+
+      {(submitted) &&
+        <div>
+          <p style={{ color: 'blue' }}>{submittedMessage}</p>
         </div>
       }
 
@@ -117,7 +145,7 @@ function SignUp() {
             <input name="organization" onChange={handleChange} value={formData.organization}/>
           </label>
         </fieldset>
-        <button type="submit" disabled={submitting}>Submit</button>
+        <button type="submit" disabled={submitting}>Sign Up</button>
       </form>
     </div>
   )

@@ -4,12 +4,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Git Repo Update detected"'
-                sh "pwd"
+                sh "Start making new Docker image"
                 dir('frontend') {
-                    sh "pwd"
+                    sh 'docker build -t runwu_frontend -f DockerFile .'
                 }
-                sh "pwd"
-                sh 'touch text.txt'
             }
         }
     }

@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Testing Updating"'
                 sh 'echo "Git Repo Update detected"'
                 sh 'echo Start making new Docker image'
                 dir('frontend') {

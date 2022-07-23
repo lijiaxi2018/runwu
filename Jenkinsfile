@@ -1,10 +1,8 @@
 pipeline {
     agent any
-    environment { 
-        BRANCH_NAME = 'main'
-    }
     stages {
         stage('Build') {
+            when { 'main' } }
             steps {
                 sh 'echo "Git Repo Update detected"'
                 sh 'echo Start making new Docker image'

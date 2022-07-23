@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            when { branch: 'main' }
+            when { branch 'main' }
             steps {
                 sh 'echo "Git Repo Update detected"'
                 sh 'echo Start making new Docker image'

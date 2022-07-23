@@ -94,7 +94,7 @@ function SignUp() {
 
   return (
     <div className="wrapper">
-      <h1>Welcome</h1>
+      <h1>Welcome Yosoro!</h1>
 
       {submitting &&
         <div>

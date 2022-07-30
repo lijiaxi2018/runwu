@@ -3,13 +3,15 @@ package com.springstarter;
 import com.mongodb.client.MongoClients;
 import com.springstarter.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -17,9 +19,9 @@ import java.util.Date;
  */
 @Component
 public class AccountManager {
+    String usersPath = "/src/main/resources/uploads/users/";
 
-
-    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://host.docker.internal:27017"), "userdata");
+    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://127.0.0.1:27017"), "userdata");
 
     private int largestId;
 
@@ -45,6 +47,11 @@ public class AccountManager {
     public User createUser(String username, String password, String organization, String avatarFilename) {
         User newUser = new User(++largestId, username, password, avatarFilename, organization, new Date(), 0,0,0,0);
         mongoTemplate.insert(newUser, "author");
+
+        String directoryPath = System.getProperty("user.dir") + usersPath + String.valueOf(username);
+        File newDirectory = new File(directoryPath);
+        newDirectory.mkdir();
+
         return newUser;
     }
 

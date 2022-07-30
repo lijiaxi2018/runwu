@@ -16,6 +16,7 @@ pipeline {
 
                     sh 'echo Delete local image'
                     sh 'docker image rm runwu_frontend'
+                    sh 'docker image rm lijiaxi2018/runwu_frontend'
                 }
 
                 dir('backend') {
@@ -28,6 +29,7 @@ pipeline {
 
                     sh 'echo Delete local image'
                     sh 'docker image rm runwu_webapi'
+                    sh 'docker image rm lijiaxi2018/runwu_webapi'
                 }
             }
         }

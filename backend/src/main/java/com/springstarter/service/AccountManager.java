@@ -1,4 +1,4 @@
-package com.springstarter;
+package com.springstarter.service;
 
 import com.mongodb.client.MongoClients;
 import com.springstarter.pojo.User;
@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.*;
@@ -17,11 +18,11 @@ import java.util.*;
  *
  *
  */
-@Component
+@Service
 public class AccountManager {
     String usersPath = "/src/main/resources/uploads/users/";
 
-    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://127.0.0.1:27017"), "userdata");
+    private final MongoTemplate mongoTemplate = new MongoTemplate(MongoClients.create("mongodb://admin:lin2890343180@127.0.0.1:27017"), "userdata");
 
     private int largestId;
 

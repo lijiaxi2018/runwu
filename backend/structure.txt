@@ -1,0 +1,22 @@
+|__ src
+|   |__ main
+|   |   |__ java
+|   |   |   |__ com
+|   |   |       |__ springstarter
+|   |   |           |__ controller
+|   |   |           |   |__ LoginController.java
+|   |   |           |__ pojo
+|   |   |           |   |__ User.java
+|   |   |           |__ service
+|   |   |           |   |__ AccountManager.java
+|   |   |           |   |__ FileSystemStorageService.java
+|   |   |           |   |__ IFileSystemStorage.java
+|   |   |           |__ HelloApplication.java
+|   |   |           |__ OpenApiConfig.java
+|   |   |__ resources
+|   |       |__ uploads
+|   |           |__ users
+|   |__ test
+|       |__ java
+|           |__ test
+|__ pom.xml

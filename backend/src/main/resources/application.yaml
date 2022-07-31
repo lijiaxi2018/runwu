@@ -18,6 +18,10 @@ apiVersion: "0.1"
 
 # Data Directory
 path:
-  uploads: "/src/main/resources/uploads/"
-  users: "/src/main/resources/uploads/users/"
+  uploads: "./src/main/resources/uploads/"
+  users: "./src/main/resources/uploads/users/"
 
+file:
+  upload:
+#    location: /src/main/resources/uploads/
+    location: /backend/src/main/resources/uploads/

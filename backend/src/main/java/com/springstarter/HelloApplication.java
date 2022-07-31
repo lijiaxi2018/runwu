@@ -1,18 +1,10 @@
 package com.springstarter;
 
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.springstarter.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.springstarter.service.AccountManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-
-import java.util.Date;
-import java.util.List;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
 public class HelloApplication {

@@ -6,7 +6,7 @@
     "version": "v0"
   },
   "paths": {
-    "/api/Account/SingUp": {
+    "/api/Account/SignUp": {
       "post": {
         "tags": [
           "Account"

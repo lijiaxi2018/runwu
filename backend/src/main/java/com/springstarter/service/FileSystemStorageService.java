@@ -59,19 +59,36 @@ public class FileSystemStorageService implements IFileSystemStorage{
 
     @Override
     public boolean copyFile(String originalPath, String newPath) throws IOException {
+
+        File source = new File(uploadPath + location + originalPath);
+        File dest = new File(uploadPath + location + newPath);
+        System.out.println(uploadPath + location);
+        if (!source.exists()) {
+            System.out.println("source not found");
+        }
+//
+//        if (!dest.exists()) {
+//            System.out.println("dest not found");
+//        }
+
         InputStream is = null;
         OutputStream os = null;
         try {
-            is = new FileInputStream(uploadPath + location + originalPath);
-            os = new FileOutputStream(uploadPath + location + newPath);
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
             byte[] buffer = new byte[1024];
             int length;
             while ((length = is.read(buffer)) > 0) {
                 os.write(buffer, 0, length);
             }
         } finally {
-            is.close();
-            os.close();
+            if (is != null) {
+                is.close();
+            }
+            if (os != null) {
+                os.close();
+            }
+
         }
 
         return true;

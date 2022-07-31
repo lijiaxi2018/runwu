@@ -10,4 +10,5 @@ public interface IFileSystemStorage {
     boolean saveFile(MultipartFile file) throws IOException;
     File loadFile(String fileName) throws FileNotFoundException;
     boolean moveFile(String originalPath, String newPath);
+    boolean copyFile(String originalPath, String newPath) throws IOException;
 }

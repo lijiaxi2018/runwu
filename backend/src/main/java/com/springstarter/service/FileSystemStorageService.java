@@ -1,9 +1,11 @@
 package com.springstarter.service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
 import lombok.Data;
+import nonapi.io.github.classgraph.utils.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,7 +47,7 @@ public class FileSystemStorageService implements IFileSystemStorage{
     }
 
     @Override
-    public boolean moveFile(String originalPath, String newPath){
+    public boolean moveFile(String originalPath, String newPath) {
         File f = new File(uploadPath + location + originalPath);
         if(!f.exists()) {
             System.out.println("file not existing!");
@@ -53,5 +55,25 @@ public class FileSystemStorageService implements IFileSystemStorage{
         }
 
         return f.renameTo(new File(uploadPath + location + newPath));
+    }
+
+    @Override
+    public boolean copyFile(String originalPath, String newPath) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(uploadPath + location + originalPath);
+            os = new FileOutputStream(uploadPath + location + newPath);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            is.close();
+            os.close();
+        }
+
+        return true;
     }
 }
